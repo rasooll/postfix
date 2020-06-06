@@ -20,7 +20,7 @@ postfix:
   relay_auth: false
   relay_username:
   relay_password:
-  limit_per_hour: 10
+  rate_delay: 20s
 
 service:
   type: ClusterIP

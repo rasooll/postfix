@@ -26,7 +26,7 @@ Current chart version is `0.0.1`
 | postfix.relay_auth | boolean | `false` |  |
 | postfix.relay_password | string | `nil` |  |
 | postfix.relay_username | string | `nil` |  |
-| postfix.limit_per_hour | int | `10` |  |
+| postfix.rate_delay | string | `20s` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | service.port | int | `25` |  |

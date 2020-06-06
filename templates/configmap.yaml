@@ -38,9 +38,7 @@ data:
     {{ if .Values.postfix.relay_tls }}
     smtp_tls_security_level = encrypt
     {{ end }}
-    smtp_destination_rate_delay = 3600s
-    smtp_destination_concurrency_limit = 2
-    smtp_destination_recipient_limit = {{ .Values.postfix.limit_per_hour }}
+    smtp_destination_rate_delay = {{ .Values.postfix.rate_delay }}
   master.cf: |
     smtp      inet  n       -       n       -       -       smtpd
     pickup    unix  n       -       n       60      1       pickup
