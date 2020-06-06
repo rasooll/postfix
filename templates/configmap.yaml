@@ -9,7 +9,8 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 data:
   main.cf: |
-    smtpd_banner = $myhostname ESMTP $mail_name (Debian/GNU)
+    smtpd_banner = $myhostname ESMTP $mail_name
+    maillog_file = /dev/stdout
     biff = no
     append_dot_mydomain = no
     readme_directory = no

@@ -23,7 +23,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args: ["-c", "/postfix-config"]
           ports:
             - name: smtp
               containerPort: 25
@@ -38,11 +37,11 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: postfix-config
-              mountPath: "/postfix-config"
-              readOnly: true
+              mountPath: "/etc/postfix/main.cf"
+              subPath: main.cf
       volumes:
         - name: postfix-config
-          configmap:
+          configMap:
             name: {{ include "postfix.fullname" . }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
